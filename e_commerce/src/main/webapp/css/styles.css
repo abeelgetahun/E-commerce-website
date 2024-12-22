@@ -73,3 +73,11 @@ body {
     padding: 20px;
     border-radius: 5px;
 }
+.product-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
