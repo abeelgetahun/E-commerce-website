@@ -21,3 +21,12 @@ body {
 .navbar {
     text-align: center;
 }
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 10px;
+}
