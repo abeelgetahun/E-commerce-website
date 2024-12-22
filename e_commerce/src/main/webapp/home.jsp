@@ -29,7 +29,28 @@
       </div>
     </section>
 
-    <section id="products" class="products">###</section>
+    <section id="products" class="products">
+      <div class="container">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product 1" />
+            <h3>Product 1</h3>
+            <p>$19.99</p>
+          </div>
+          <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product 2" />
+            <h3>Product 2</h3>
+            <p>$29.99</p>
+          </div>
+          <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Product 3" />
+            <h3>Product 3</h3>
+            <p>$39.99</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="container">
