@@ -21,6 +21,15 @@
         </nav>
       </div>
     </header>
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Discover Amazing Products</h2>
+        <p>Shop the latest trends and enjoy exclusive deals today!</p>
+        <a href="#products" class="btn">Shop Now</a>
+      </div>
+    </section>
+
+    <section id="products" class="products">###</section>
 
     <footer class="footer">
       <div class="container">
