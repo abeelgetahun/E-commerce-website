@@ -21,28 +21,21 @@
     <link rel="stylesheet" href="components/styles/category-products.css">
 </head>
 <body>
-    <!-- Navbar -->
     <jsp:include page="components/navbar.jsp" />
-
-    <!-- Search -->
     <jsp:include page="components/search.jsp" />
-
-    <!-- Cart -->
-    <button class="cart-toggle-btn" onclick="toggleCart()">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count">0</span>
-    </button>
     <jsp:include page="components/cart.jsp" />
 
-    <!-- Main Content -->
-    <div class="main-content">
+    <jsp:include page="components/category-products.jsp" />
+
+    <div class="main-content cart-closed">
         <jsp:include page="components/popular.jsp" />
-        <jsp:include page="components/category-products.jsp" />
     </div>
 
-    <!-- Scripts -->
     <script src="js/cart.js"></script>
+
     <script src="js/popular.js"></script>
     <script src="js/category-products.js"></script>
+
+
 </body>
 </html>

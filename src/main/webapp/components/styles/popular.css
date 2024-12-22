@@ -1,9 +1,6 @@
 /* Popular Section */
         .popular-section {
-                padding: 2rem;
-                max-width: 1200px;
-                margin: 0 auto;
-                overflow: hidden;
+                margin: 20px 0;
             }
 
             .popular-container {

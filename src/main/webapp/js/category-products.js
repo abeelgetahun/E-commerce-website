@@ -18,19 +18,20 @@ function addToCart(productId) {
     const qty = document.getElementById(`qty-${productId}`).value;
 
     // Make AJAX call to add item to cart
-    fetch('/add-to-cart', {
+    fetch('/cart', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            action: 'add',
             productId: productId,
             quantity: qty
         })
     })
     .then(response => response.json())
     .then(data => {
-        if(data.success) {
+        if (data.success) {
             // Show success message
             showNotification('Product added to cart successfully!', 'success');
             // Update cart count if necessary
@@ -57,4 +58,59 @@ function updateCartCount(count) {
     if(cartCountElement) {
         cartCountElement.textContent = count;
     }
+}
+
+// Remove from cart function
+function removeFromCart(productId) {
+    fetch('/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            action: 'remove',
+            productId: productId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update cart display
+            document.querySelector(`.cart-item[data-product-id="${productId}"]`).remove();
+            updateCartTotal(data.cartTotal);
+        } else {
+            showNotification('Failed to remove product from cart.', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('An error occurred.', 'error');
+    });
+}
+// Update cart item function
+function updateCartItem(productId, quantity) {
+    fetch('/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            action: 'update',
+            productId: productId,
+            quantity: quantity
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update cart total
+            updateCartTotal(data.cartTotal);
+        } else {
+            showNotification('Failed to update cart item.', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('An error occurred.', 'error');
+    });
 }
