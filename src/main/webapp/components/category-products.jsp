@@ -9,7 +9,7 @@
     <%
         ProductDAO productDAO = new ProductDAO();
         // Updated categories to match your database
-        String[] categories = {"Mobile", "pc", "watch", "Headset", "TV"};
+        String[] categories = {"mobile", "pc", "watch", "headset", "tv"};
 
         for(String category : categories) {
             List<Product> products = productDAO.getProductsByCategory(category);
