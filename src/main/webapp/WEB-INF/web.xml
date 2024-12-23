@@ -14,8 +14,13 @@
   </welcome-file-list>
 
 
-
-
-
+  <servlet>
+    <servlet-name>BalanceServlet</servlet-name>
+    <servlet-class>com.genuine.servlet.BalanceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BalanceServlet</servlet-name>
+    <url-pattern>/balance/*</url-pattern>
+  </servlet-mapping>
 
 </web-app>

@@ -1,6 +1,8 @@
 package com.genuine.dao;
 
 import com.genuine.model.User;
+
+import java.math.BigDecimal;
 import java.sql.*;
 
 public class UserDAO {
@@ -29,7 +31,8 @@ public class UserDAO {
                 user.setPhoneNumber(rs.getString("phone_number"));
                 user.setCountryCode(rs.getString("country_code"));
                 user.setCountryName(rs.getString("country_name"));
-                // Don't set password for security reasons
+                user.setBalance(rs.getDouble("balance"));
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,33 +49,33 @@ public class UserDAO {
     }
 
 
-        public boolean isUsernameAvailable(String username) {
-            try (Connection conn = DBConnection.getConnection();
-                 PreparedStatement pstmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE username = ?")) {
-                pstmt.setString(1, username);
-                ResultSet rs = pstmt.executeQuery();
-                if (rs.next()) {
-                    return rs.getInt(1) == 0;
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+    public boolean isUsernameAvailable(String username) {
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE username = ?")) {
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) == 0;
             }
-            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return false;
+    }
 
-        public boolean isEmailAvailable(String email) {
-            try (Connection conn = DBConnection.getConnection();
-                 PreparedStatement pstmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ?")) {
-                pstmt.setString(1, email);
-                ResultSet rs = pstmt.executeQuery();
-                if (rs.next()) {
-                    return rs.getInt(1) == 0;
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+    public boolean isEmailAvailable(String email) {
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement("SELECT COUNT(*) FROM users WHERE email = ?")) {
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) == 0;
             }
-            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return false;
+    }
 
     public boolean createUser(User user) {
         String sql = "INSERT INTO users (full_name, username, email, phone_number, country_code, country_name, password) "
@@ -102,4 +105,5 @@ public class UserDAO {
         }
         return false;
     }
-    }
+
+}

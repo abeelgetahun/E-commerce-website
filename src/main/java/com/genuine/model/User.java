@@ -1,10 +1,6 @@
 package com.genuine.model;
 
-import com.genuine.dao.DBConnection;
-
 import java.security.Timestamp;
-import java.sql.*;
-
 public class User {
 
     private int id;
@@ -15,6 +11,8 @@ public class User {
     private String countryCode;
     private String countryName;
     private String password;
+    private Double balance;
+
     private Timestamp createdAt;
 
     // Getters and Setters
@@ -66,6 +64,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    
 
+    public Double getBalance() { return balance; }
+    public void setBalance(Double balance) { this.balance = balance; }
 }
