@@ -10,7 +10,7 @@ import java.io.IOException;
 
 @WebServlet("/adminLogin")
 public class AdminLoginServlet extends HttpServlet {
-    // Hard-coded admin credentials (in real applications, use secure storage)
+
     private static final String ADMIN_USERNAME = "admin";
     private static final String ADMIN_PASSWORD = "admin@123";
 

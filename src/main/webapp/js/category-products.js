@@ -73,7 +73,7 @@ function addToCart(productId, quantity) {
     .then(response => response.json())
     .then(data => {
         if(data.success) {
-            showNotification('Product added to cart successfully!');
+            showNotification('Product added to cart successfully!', 'success');
             updateCartCount();
         } else {
             showNotification('Failed to add product to cart.', 'error');
@@ -119,4 +119,41 @@ function updateCartCount() {
             }
         })
         .catch(error => console.error('Error updating cart count:', error));
+}
+
+
+
+
+
+function showNotification(message, type = 'success') {
+    // Create the notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="message">${message}</span>
+            <button class="close-btn">&times;</button>
+        </div>
+    `;
+
+    // Add the notification to the body
+    document.body.appendChild(notification);
+
+    // Add animation class to show the notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+
+    // Close button event
+    const closeButton = notification.querySelector('.close-btn');
+    closeButton.addEventListener('click', () => {
+        notification.classList.add('hide');
+        setTimeout(() => notification.remove(), 300);
+    });
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => {
+        notification.classList.add('hide');
+        setTimeout(() => notification.remove(), 300);
+    }, 4000);
 }
