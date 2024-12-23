@@ -15,6 +15,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("doPost method called!"); // Add this line for debugging
         String loginId = request.getParameter("loginId");
         String password = request.getParameter("password");
 

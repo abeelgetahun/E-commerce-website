@@ -73,7 +73,7 @@
         <% if(request.getAttribute("error") != null) { %>
             <div class="error">${error}</div>
         <% } %>
-        <form action="${pageContext.request.contextPath}/login" method="post">
+        <form action="/E_commerce/login" method="post">
             <div class="form-group">
                 <label>Username or Email</label>
                 <input type="text" name="loginId" required>
@@ -87,7 +87,8 @@
             </div>
         </form>
         <div class="signup-link">
-            Don't have an account? <a href="${pageContext.request.contextPath}/signup.jsp">Sign Up</a>
+            Don't have an account?
+            <a href="${pageContext.request.contextPath}/signup.jsp">Sign Up</a>
         </div>
         <a href="${pageContext.request.contextPath}/adminLogin.jsp" class="admin-button">Admin Login</a>
     </div>
