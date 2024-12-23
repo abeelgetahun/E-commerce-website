@@ -31,6 +31,10 @@
         <jsp:include page="components/popular.jsp" />
     </div>
 
+    <footer>
+        <jsp:include page="components/footer.jsp" />
+    </footer>
+
     <script src="js/popular.js"></script>
     <script src="js/category-products.js"></script>
 
