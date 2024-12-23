@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ page import="com.genuine.model.User" %>
 <%
     User user = (User) session.getAttribute("user");
@@ -7,6 +8,7 @@
         return;
     }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +19,7 @@
     <link rel="stylesheet" href="components/styles/navbar.css">
     <link rel="stylesheet" href="components/styles/search.css">
     <link rel="stylesheet" href="components/styles/popular.css">
+    <link rel="stylesheet" href="components/styles/footer.css">
     <link rel="stylesheet" href="components/styles/category-products.css">
 </head>
 <body>
