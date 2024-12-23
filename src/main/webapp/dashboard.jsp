@@ -38,6 +38,5 @@
     <script src="js/popular.js"></script>
     <script src="js/category-products.js"></script>
 
-
 </body>
 </html>
