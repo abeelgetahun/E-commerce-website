@@ -1,116 +1,88 @@
-// Quantity control functions
-function decreaseQty(productId) {
-    const input = document.getElementById(`qty-${productId}`);
-    if(input.value > 1) {
-        input.value = parseInt(input.value) - 1;
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            // Load products for the selected category
+            loadCategoryProducts(this.dataset.category);
+        });
+    });
+});
+
+function loadCategoryProducts(category) {
+    fetch(`GetProductsByCategory?category=${category}`)
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.products-container').innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Error loading products:', error);
+            document.querySelector('.products-container').innerHTML =
+                '<div class="no-products">Error loading products. Please try again later.</div>';
+        });
 }
 
-function increaseQty(productId) {
-    const input = document.getElementById(`qty-${productId}`);
-    if(input.value < 10) {
-        input.value = parseInt(input.value) + 1;
-    }
-}
-
-// Add to cart function
-function addToCart(productId) {
-    const qty = document.getElementById(`qty-${productId}`).value;
-
-    // Make AJAX call to add item to cart
-    fetch('/cart', {
+function addToCart(productId, quantity) {
+    fetch('AddToCart', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
-            action: 'add',
-            productId: productId,
-            quantity: qty
-        })
+        body: `productId=${productId}&quantity=${quantity}`
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
-            // Show success message
-            showNotification('Product added to cart successfully!', 'success');
-            // Update cart count if necessary
-            updateCartCount(data.cartCount);
+        if(data.success) {
+            showNotification('Product added to cart successfully!');
+            updateCartCount();
         } else {
             showNotification('Failed to add product to cart.', 'error');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        showNotification('An error occurred.', 'error');
+        showNotification('Error adding product to cart.', 'error');
     });
 }
 
-// Helper function to show notifications
-function showNotification(message, type) {
-    // Implement your notification system here
-    console.log(`${type}: ${message}`);
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 100);
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
 }
 
-// Helper function to update cart count
-function updateCartCount(count) {
-    const cartCountElement = document.querySelector('.cart-count');
-    if(cartCountElement) {
-        cartCountElement.textContent = count;
-    }
-}
-
-// Remove from cart function
-function removeFromCart(productId) {
-    fetch('/cart', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            action: 'remove',
-            productId: productId
+function updateCartCount() {
+    fetch('GetCartCount')
+        .then(response => response.json())
+        .then(data => {
+            const cartCount = document.querySelector('.cart-count');
+            if(cartCount) {
+                cartCount.textContent = data.count;
+                if(data.count > 0) {
+                    cartCount.style.display = 'block';
+                } else {
+                    cartCount.style.display = 'none';
+                }
+            }
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Update cart display
-            document.querySelector(`.cart-item[data-product-id="${productId}"]`).remove();
-            updateCartTotal(data.cartTotal);
-        } else {
-            showNotification('Failed to remove product from cart.', 'error');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        showNotification('An error occurred.', 'error');
-    });
-}
-// Update cart item function
-function updateCartItem(productId, quantity) {
-    fetch('/cart', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            action: 'update',
-            productId: productId,
-            quantity: quantity
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Update cart total
-            updateCartTotal(data.cartTotal);
-        } else {
-            showNotification('Failed to update cart item.', 'error');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        showNotification('An error occurred.', 'error');
-    });
+        .catch(error => console.error('Error updating cart count:', error));
 }

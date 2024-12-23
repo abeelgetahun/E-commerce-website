@@ -1,24 +1,95 @@
-// Helper function to update cart items
-function updateCartItems(items) {
-    const cartItemsContainer = document.querySelector('.cart-items');
-    cartItemsContainer.innerHTML = ''; // Clear existing items
-    items.forEach(item => {
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('cart-item');
-        cartItem.dataset.productId = item.product.productId;
-        cartItem.innerHTML = `
-            <img src="${item.product.imagePath}" alt="${item.product.name}" class="cart-item-image">
-            <div class="cart-item-details">
-                <div class="cart-item-name">${item.product.name}</div>
-                <div class="cart-item-price">$${item.product.price}</div>
-                <div class="cart-item-quantity">
-                    Qty: <input type="number" value="${item.quantity}" min="1" max="10" onchange="updateCartItem(${item.product.productId}, this.value)">
+document.addEventListener('DOMContentLoaded', function() {
+    loadCart();
+});
+
+function loadCart() {
+    fetch('GetCartItems')
+        .then(response => response.json())
+        .then(data => {
+            const cartItems = document.getElementById('cartItems');
+            if (data.items.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <h2>Your cart is empty</h2>
+                        <p>Browse our products and add some items to your cart!</p>
+                    </div>
+                `;
+                updateSummary(0, 0);
+                return;
+            }
+
+            cartItems.innerHTML = data.items.map(item => `
+                <div class="cart-item" data-product-id="${item.productId}">
+                    <img src="${item.imagePath}" alt="${item.name}" class="item-image">
+                    <div class="item-details">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-company">${item.company}</div>
+                        <div class="item-price">$${item.price.toFixed(2)}</div>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="updateQuantity(${item.productId}, -1)">-</button>
+                        <span class="quantity-display">${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateQuantity(${item.productId}, 1)">+</button>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${item.productId})">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </div>
-            </div>
-            <button class="remove-cart-item-btn" onclick="removeFromCart(${item.product.productId})">Remove</button>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-    });
-    // Update cart total
-    updateCartTotal(items.reduce((total, item) => total + item.product.price * item.quantity, 0));
+            `).join('');
+
+            updateSummary(data.subtotal, data.shipping);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function updateQuantity(productId, change) {
+    fetch('UpdateCartQuantity', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `productId=${productId}&change=${change}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            loadCart();
+        } else {
+            alert('Failed to update quantity');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function removeFromCart(productId) {
+    if(!confirm('Are you sure you want to remove this item from your cart?')) {
+        return;
+    }
+
+    fetch('RemoveFromCart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `productId=${productId}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            loadCart();
+        } else {
+            alert('Failed to remove item from cart');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function updateSummary(subtotal, shipping) {
+    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('shipping').textContent = `$${shipping.toFixed(2)}`;
+    document.getElementById('total').textContent = `$${(subtotal + shipping).toFixed(2)}`;
+}
+
+function proceedToCheckout() {
+    window.location.href = 'checkout.jsp';
 }
