@@ -1,31 +1,65 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-
-            // Add active class to clicked button
-            this.classList.add('active');
-
-            // Load products for the selected category
-            loadCategoryProducts(this.dataset.category);
-        });
-    });
+    initializeScrollButtons();
+    checkScrollButtons();
+    window.addEventListener('resize', checkScrollButtons);
 });
 
-function loadCategoryProducts(category) {
-    fetch(`GetProductsByCategory?category=${category}`)
-        .then(response => response.text())
-        .then(html => {
-            document.querySelector('.products-container').innerHTML = html;
-        })
-        .catch(error => {
-            console.error('Error loading products:', error);
-            document.querySelector('.products-container').innerHTML =
-                '<div class="no-products">Error loading products. Please try again later.</div>';
+function initializeScrollButtons() {
+    const containers = document.querySelectorAll('.products-container');
+
+    containers.forEach(container => {
+        const scrollContainer = container.parentElement;
+        const leftButton = scrollContainer.querySelector('.scroll-button.left');
+        const rightButton = scrollContainer.querySelector('.scroll-button.right');
+
+        // Add scroll event listener to container
+        container.addEventListener('scroll', () => {
+            updateScrollButtons(container);
         });
+
+        // Add click events to buttons
+        leftButton.addEventListener('click', () => {
+            scrollProducts(container, 'left');
+        });
+
+        rightButton.addEventListener('click', () => {
+            scrollProducts(container, 'right');
+        });
+
+        // Initial check for scroll buttons
+        updateScrollButtons(container);
+    });
+}
+
+function scrollProducts(container, direction) {
+    const scrollAmount = container.offsetWidth - 100;
+    const scrollPosition = direction === 'left' ?
+        container.scrollLeft - scrollAmount :
+        container.scrollLeft + scrollAmount;
+
+    container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+    });
+}
+
+function updateScrollButtons(container) {
+    const scrollContainer = container.parentElement;
+    const leftButton = scrollContainer.querySelector('.scroll-button.left');
+    const rightButton = scrollContainer.querySelector('.scroll-button.right');
+
+    // Check if scrolling is possible
+    const canScrollLeft = container.scrollLeft > 0;
+    const canScrollRight = container.scrollLeft < (container.scrollWidth - container.offsetWidth);
+
+    // Update button visibility
+    leftButton.classList.toggle('hidden', !canScrollLeft);
+    rightButton.classList.toggle('hidden', !canScrollRight);
+}
+
+function checkScrollButtons() {
+    const containers = document.querySelectorAll('.products-container');
+    containers.forEach(updateScrollButtons);
 }
 
 function addToCart(productId, quantity) {
