@@ -56,7 +56,7 @@
             border-color: #ff0000;
         }
         .button {
-            background-color: black;
+            background-color: #4CAF50;
             color: white;
             padding: 10px 15px;
             border: none;
