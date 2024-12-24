@@ -1,4 +1,14 @@
 /* Footer styling */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body takes up the full viewport height */
+  margin: 0;
+}
+
+main {
+  flex: 1; /* Pushes the footer to the bottom */
+}
 .footer-content {
   background-color: #333;
   color: white;
@@ -8,7 +18,7 @@
   width: 100%;
   text-align: center;
   margin-top: 30px;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
