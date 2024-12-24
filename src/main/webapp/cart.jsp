@@ -4,7 +4,6 @@
 <%@ page import="com.genuine.model.Product" %>
 <%@ page import="com.genuine.dao.ProductDAO" %>
 <%@ page import="java.util.HashMap" %>
-<%--
 <%
     User user = (User) session.getAttribute("user");
     if(user == null) {
@@ -18,7 +17,6 @@
         session.setAttribute("cart", cart);
     }
 %>
---%>
 <!DOCTYPE html>
 <html>
 <head>
