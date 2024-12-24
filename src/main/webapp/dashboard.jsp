@@ -1,13 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="com.genuine.model.User" %>
-<%
-    User user = (User) session.getAttribute("user");
-    if(user == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
-%>
+
 
 <!DOCTYPE html>
 <html>
@@ -25,9 +19,6 @@
 <body>
     <jsp:include page="components/navbar.jsp" />
     <jsp:include page="components/search.jsp" />
-    <div class="main-content cart-closed">
-            <jsp:include page="components/popular.jsp" />
-    </div>
 
     <jsp:include page="components/category-products.jsp" />
 
