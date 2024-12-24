@@ -154,6 +154,6 @@ function showNotification(message, type = 'success') {
     // Auto-hide after 4 seconds
     setTimeout(() => {
         notification.classList.add('hide');
-        setTimeout(() => notification.remove(), 300);
+        setTimeout(() => notification.remove(), 200);
     }, 4000);
 }
