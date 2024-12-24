@@ -25,9 +25,6 @@
 <body>
     <jsp:include page="components/navbar.jsp" />
     <jsp:include page="components/search.jsp" />
-    <div class="main-content cart-closed">
-            <jsp:include page="components/popular.jsp" />
-    </div>
 
     <jsp:include page="components/category-products.jsp" />
 
