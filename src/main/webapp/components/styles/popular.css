@@ -1,6 +1,6 @@
 /* Popular Section */
 .popular-section {
-    margin: 20px 20px; // adding space to all side of the box
+    margin: 20px 20px 80px 20px; // adding space to all side of the box
 }
 
 .popular-container {
