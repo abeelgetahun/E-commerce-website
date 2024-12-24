@@ -40,12 +40,12 @@ public class CheckoutServlet extends HttpServlet {
                 .sum();
 
         // Check and update user balance
-        if (orderDAO.checkAndUpdateBalance(user.getUserId(), totalAmount)) {
+        if (orderDAO.checkAndUpdateBalance(user.getId(), totalAmount)) {
             // Create orders for each cart item
             boolean allOrdersSuccessful = true;
             for (CartItem item : cartItems) {
                 Order order = new Order();
-                order.setUserId(user.getUserId());
+                order.setUserId(user.getId());
                 order.setProductId(item.getProduct().getProductId());
                 order.setQuantity(item.getQuantity());
                 order.setTotalAmount(item.getTotalPrice());

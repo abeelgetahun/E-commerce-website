@@ -91,5 +91,22 @@ function updateSummary(subtotal, shipping) {
 }
 
 function proceedToCheckout() {
-    window.location.href = 'checkout.jsp';
+    fetch('checkout', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during checkout');
+    });
 }
