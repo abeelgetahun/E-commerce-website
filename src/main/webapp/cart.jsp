@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="components/styles/common.css">
     <link rel="stylesheet" href="components/styles/navbar.css">
     <link rel="stylesheet" href="components/styles/cart.css">
+    <link rel="stylesheet" href="components/styles/footer.css">
 </head>
 <body>
     <jsp:include page="components/navbar.jsp" />
@@ -58,6 +59,10 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <jsp:include page="components/footer.jsp" />
+    </footer>
 
     <script src="js/cart.js"></script>
 </body>
