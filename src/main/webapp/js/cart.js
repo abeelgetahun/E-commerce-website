@@ -91,7 +91,7 @@ function updateSummary(subtotal, shipping) {
 }
 
 function proceedToCheckout() {
-    fetch('checkout', {
+    fetch('processCheckout', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -101,6 +101,7 @@ function proceedToCheckout() {
     .then(data => {
         if (data.success) {
             alert(data.message);
+            loadCart();  // Reload cart (it will be empty now)
         } else {
             alert(data.message);
         }
