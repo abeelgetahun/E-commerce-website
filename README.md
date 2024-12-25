@@ -80,5 +80,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Special thanks to all contributors and the open-source community for their invaluable resources and support.
 
 ---
-
-Feel free to customize it further to better reflect the specifics of your application. 
+ 
