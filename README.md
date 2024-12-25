@@ -81,4 +81,4 @@ Special thanks to all contributors and the open-source community for their inval
 
 ---
 
-Feel free to customize it further to better reflect the specifics of your application. If you have any more requests or need additional information, let me know!
+Feel free to customize it further to better reflect the specifics of your application. 
