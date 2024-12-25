@@ -9,7 +9,7 @@ An intuitive e-commerce platform that enables seamless item management and sales
 - **Order Processing**: Manage and process customer orders efficiently.
 
 ## Technologies Used
-- **Backend**: Java
+- **Backend**: Java(https://www.oracle.com/a/tech/img/cb88-java-logo-001.jpg) Java
 - **Frontend**: HTML, CSS, JavaScript
 - **Database**: MySQL
 - **Build Tool**: Maven
