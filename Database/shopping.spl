@@ -1,0 +1,124 @@
+-- Base products table
+CREATE TABLE products (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    category VARCHAR(50) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    company VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    description TEXT,
+    image_path VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Mobile phone specifications
+CREATE TABLE mobile_specs (
+    spec_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    brand VARCHAR(100),
+    os VARCHAR(100),
+    ram VARCHAR(50),
+    storage VARCHAR(50),
+    main_camera VARCHAR(100),
+    rear_camera VARCHAR(100),
+    network_tech VARCHAR(100),
+    screen_tech VARCHAR(100),
+    weight VARCHAR(50),
+    launch_date DATE,
+    battery_capacity VARCHAR(50),
+    charging_specs VARCHAR(100),
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
+
+-- PC and Laptop specifications
+CREATE TABLE pc_specs (
+    spec_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    brand VARCHAR(100),
+    processor_speed VARCHAR(100),
+    ram VARCHAR(50),
+    storage VARCHAR(50),
+    display_size VARCHAR(50),
+    graphics_card VARCHAR(100),
+    os VARCHAR(100),
+    battery_capacity VARCHAR(50),
+    charging_specs VARCHAR(100),
+    touch_sensor BOOLEAN,
+    keyboard_light BOOLEAN,
+    num_fans INT,
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
+ 
+ -- Smart Watch specifications
+CREATE TABLE watch_specs (
+    spec_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    model VARCHAR(100),
+    storage VARCHAR(50),
+    ram VARCHAR(50),
+    rear_camera VARCHAR(100),
+    front_camera VARCHAR(100),
+    battery_capacity VARCHAR(50),
+    charging_specs VARCHAR(100),
+    connectivity VARCHAR(200),
+    display_size VARCHAR(50),
+    water_proof VARCHAR(50),
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
+
+-- Headset specifications
+CREATE TABLE headset_specs (
+    spec_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    brand VARCHAR(100),
+    battery_capacity VARCHAR(50),
+    charging_specs VARCHAR(100),
+    wireless_technology VARCHAR(100),
+    noise_cancellation BOOLEAN,
+    color VARCHAR(50),
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
+
+-- TV specifications
+CREATE TABLE tv_specs (
+    spec_id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    model VARCHAR(100),
+    screen_size VARCHAR(50),
+    screen_resolution VARCHAR(50),
+    refresh_rate VARCHAR(50),
+    operating_system VARCHAR(100),
+    audio_system VARCHAR(200),
+    backlight VARCHAR(100),
+    num_speakers INT,
+    wifi_specs VARCHAR(100),
+    bluetooth_specs VARCHAR(100),
+    usb_ports INT,
+    hdmi_ports INT,
+    memory VARCHAR(50),
+    weight VARCHAR(50),
+    FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
+ 
+ -- Transaction table
+CREATE TABLE transactions (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    sender_id INT NOT NULL,
+    recipient_account_number VARCHAR(50) NOT NULL,
+    bank_name VARCHAR(100) NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    screenshot_path VARCHAR(255),
+    status VARCHAR(20) DEFAULT 'PENDING',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES users(id)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
