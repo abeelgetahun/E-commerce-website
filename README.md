@@ -8,6 +8,9 @@ An intuitive e-commerce platform that enables seamless item management and sales
 - **Shopping Cart**: Add products to the cart and proceed to checkout.
 - **Order Processing**: Manage and process customer orders efficiently.
 
+## TechStack
+
+
 ## Technologies Used
 - **Backend**: Java
 - **Frontend**: HTML, CSS, JavaScript
