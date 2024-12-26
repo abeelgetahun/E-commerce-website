@@ -9,7 +9,8 @@ An intuitive e-commerce platform that enables seamless item management and sales
 - **Order Processing**: Manage and process customer orders efficiently.
 
 ## TechStack
-
+![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
 ## Technologies Used
 - **Backend**: Java
