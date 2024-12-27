@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="components/styles/common.css">
     <link rel="stylesheet" href="components/styles/navbar.css">
-    <link rel="stylesheet" href="components/styles/cart.css">
+    <link rel="stylesheet" href="components/styles/contact_us.css">
     <link rel="stylesheet" href="components/styles/footer.css">
 </head>
 <body>
