@@ -1,11 +1,7 @@
 .contact-us {
     margin-top: 40px;
     padding: 30px;
-    background: linear-gradient(
-      to right,
-      #f4f4f4,
-      #e0e0e0
-    ); /* Gradient background */
+    /* Gradient background */
     border-radius: 12px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
     max-width: 600px;
