@@ -1,41 +1,93 @@
 .contact-us {
     margin-top: 40px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
+    padding: 30px;
+    background: linear-gradient(
+      to right,
+      #f4f4f4,
+      #e0e0e0
+    ); /* Gradient background */
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Adding shadow for depth */
+    max-width: 600px;
+    margin: 40px auto;
 }
 
 .contact-us h2 {
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+    font-weight: 600;
 }
 
 .contact-us form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .contact-us label {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
 }
 
-.contact-us input, .contact-us textarea {
-    padding: 10px;
+.contact-us input,
+.contact-us textarea {
+    padding: 12px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.contact-us input:focus,
+.contact-us textarea:focus {
+    border-color: #4caf50; /* Green border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
+
+.contact-us textarea {
+    resize: vertical;
+    min-height: 150px;
 }
 
 .contact-us button.submit-btn {
     background-color: #333;
     color: white;
-    padding: 12px 20px;
+    padding: 8px 20px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    text-transform: uppercase;
 }
 
 .contact-us button.submit-btn:hover {
-    background-color: green;
+    background-color: #4caf50; /* Green on hover */
+}
+
+.contact-us button.submit-btn:active {
+    background-color: #388e3c; /* Darker green when clicked */
+    }
+
+.contact-us .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-us input[type="email"] {
+    background-color: #f9f9f9;
+}
+
+.contact-us input,
+.contact-us textarea {
+    font-family: "Arial", sans-serif;
 }
