@@ -4,19 +4,6 @@
 <%@ page import="com.genuine.model.Product" %>
 <%@ page import="com.genuine.dao.ProductDAO" %>
 <%@ page import="java.util.HashMap" %>
-<%
-    User user = (User) session.getAttribute("user");
-    if(user == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
-
-    Map<Integer, Integer> cart = (Map<Integer, Integer>) session.getAttribute("cart");
-    if(cart == null) {
-        cart = new HashMap<>();
-        session.setAttribute("cart", cart);
-    }
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +18,22 @@
 <body>
     <jsp:include page="components/navbar.jsp" />
 
-    <!-- Add contact us form -->
+    <div class="contact-us">
+        <h2>Contact Us</h2>
+        <form action="contact_us.jsp" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
 
     <footer>
         <jsp:include page="components/footer.jsp" />
