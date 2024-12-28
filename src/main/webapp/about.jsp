@@ -189,6 +189,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="about.js"></script>
 </body>
 </html>
