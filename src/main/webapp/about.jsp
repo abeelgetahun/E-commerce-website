@@ -185,7 +185,7 @@
             </div>
         </div>
 
-        <!-- Navigation Buttons -->
+  <!-- Navigation Buttons for Scrolling -->
         <div class="button">
             <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
             <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
