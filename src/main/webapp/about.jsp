@@ -191,7 +191,7 @@
             <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
-
+    <!-- JavaScript File for Functionality -->
     <script src="about.js"></script>
 </body>
 </html>
