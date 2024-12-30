@@ -4,6 +4,7 @@
 <head>
     <title>Login</title>
     <style>
+        /* Styles for the login container */
         .login-container {
             width: 300px;
             margin: 100px auto;
@@ -11,6 +12,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+        /* Styling for form groups */
         .form-group {
             margin-bottom: 15px;
         }
@@ -24,6 +26,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+        /* Styles for the login button */
         .button {
             background-color: #000000;
             color: white;
@@ -36,10 +39,12 @@
         .button:hover {
             background-color: #45a049;
         }
+        /* Error message styles */
         .error {
             color: red;
             margin-bottom: 15px;
         }
+        /* Styles for the signup link */
         .signup-link {
             text-align: center;
             margin-top: 15px;
@@ -51,6 +56,7 @@
         .signup-link a:hover {
             text-decoration: underline;
         }
+        /* Styles for the admin login button */
         .admin-button {
             display: block;
             width: 100%;
@@ -70,9 +76,14 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <% if(request.getAttribute("error") != null) { %>
+        <% 
+        // Check if an error attribute exists in the request scope 
+        // and display it as an error message if present
+        if(request.getAttribute("error") != null) { 
+        %>
             <div class="error">${error}</div>
         <% } %>
+        <!-- Login form submission -->
         <form action="/E_commerce/login" method="post">
             <div class="form-group">
                 <label>Username or Email</label>
@@ -86,10 +97,12 @@
                 <button type="submit" class="button">Login</button>
             </div>
         </form>
+        <!-- Link to sign up page -->
         <div class="signup-link">
             Don't have an account?
             <a href="${pageContext.request.contextPath}/signup.jsp">Sign Up</a>
         </div>
+        <!-- Admin login button -->
         <a href="${pageContext.request.contextPath}/adminLogin.jsp" class="admin-button">Admin Login</a>
     </div>
 </body>
