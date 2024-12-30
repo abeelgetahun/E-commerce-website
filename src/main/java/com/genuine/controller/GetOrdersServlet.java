@@ -27,11 +27,11 @@ public class GetOrdersServlet extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
         Map<String, Object> jsonResponse = new HashMap<>();
-
+// Check If The User Is There Or Not
         if (user != null) {
             List<Order> orders = orderDAO.getUserOrders(user.getId());
             jsonResponse.put("orders", orders);
-        } else {
+        } else { //If The User is Not Signed Up Or Logged IN
             jsonResponse.put("error", "User not logged in");
         }
 
