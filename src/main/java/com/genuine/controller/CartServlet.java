@@ -14,32 +14,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/cart")
+@WebServlet("/cart")//to define and configure servlets and It simplifies the process of servlet declaration by eliminating the need for entries in the web.xml deployment descriptor
 public class CartServlet extends HttpServlet {
     private final ProductDAO productDAO = new ProductDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            //We Throw Any Servlet Andd IO Exception Tha Can Occur
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        List<CartItem> cartItems = (List<CartItem>) session.getAttribute("cartItems");
-
+        HttpSession session = request.getSession();//Create Session object to keep track of customers interaction
+        List<CartItem> cartItems = (List<CartItem>) session.getAttribute("cartItems");//adds the Product Purchased by the customer to the session
+        //If The Session Is Empty We Assign It As a New Empty Arraylist
         if (cartItems == null) {
             cartItems = new ArrayList<>();
         }
 
-        String action = request.getParameter("action");
-        int productId = Integer.parseInt(request.getParameter("productId"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String action = request.getParameter("action");//Retrieves The Value Of The Action Parameter From The Request.
+        int productId = Integer.parseInt(request.getParameter("productId"));//Retrieves the productId parameter from the request and converts it to an integer.
+        int quantity = Integer.parseInt(request.getParameter("quantity"));//retrieves the quantity parameter from the request and converts it to an integer.
 
-        if ("add".equals(action)) {
-            Product product = productDAO.getProductById(productId);
-            boolean found = false;
-            for (CartItem item : cartItems) {
-                if (item.getProduct().getProductId() == productId) {
-                    item.setQuantity(item.getQuantity() + quantity);
-                    found = true;
-                    break;
+        if ("add".equals(action))//Checks if the action parameter is "add". {
+            Product product = productDAO.getProductById(productId);//Retrieves the product with the specified productId from the database
+            boolean found = false;//Initializes a flag to check if the product is already in the cart.
+                for (CartItem item : cartItems)//Iterates over the items in the cart to see if the product is already there. {
+                if (item.getProduct().getProductId() == productId)//Checks if the current item in the cart matches the productId. {
+                    item.setQuantity(item.getQuantity() + quantity);//If the product is found, updates the quantity of the item in the cart.
+                    found = true;//Sets the flag to true indicating the product was found.
+                    break;//Exits the loop once the product is found.
                 }
             }
             if (!found) {
