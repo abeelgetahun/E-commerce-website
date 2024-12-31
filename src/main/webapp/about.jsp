@@ -58,10 +58,10 @@
 
         .item {
             flex: 0 0 auto;
-            width: 300px;
+            width: 200px;
             height: 500px;
             margin: 10px;
-            margin-bottom:60px;
+            margin-bottom:130px;
             margin-left:30px;
             border-radius: 10px;
             position: relative;
@@ -72,7 +72,7 @@
         }
 
         .item.active {
-            transform: scale(1.2);
+            transform: scale(1.5);
             z-index: 1;
 
         }
@@ -207,7 +207,34 @@
                     </div>
                 </div>
             </div>
+            <div class="item" style="background-image:url(https://i.ibb.co/jrRb11q/img2.jpg);">
+                <div class="content">
+                    <div class="name">Abreham</div>
+                    <div class="bio">Overall System Viewer and Editors.</div>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://i.ibb.co/RNkk6L0/img6.jpg);">
+                <div class="content">
+                    <div class="name">Aklilu</div>
+                    <div class="bio">Frontend Developer.</div>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
 
   <!-- Navigation Buttons for Scrolling -->
         <div class="button">
