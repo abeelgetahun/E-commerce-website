@@ -1,12 +1,23 @@
-let next = document.querySelector('.next')
-let prev = document.querySelector('.prev')
 
-next.addEventListener('click', function(){
-    let items = document.querySelectorAll('.item')
-    document.querySelector('.slide').appendChild(items[0])
-})
-
-prev.addEventListener('click', function(){
-    let items = document.querySelectorAll('.item')
-    document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
-})
+    const items = document.querySelectorAll('.item');
+    let currentIndex = Math.floor(items.length / 2);
+    function showItems() {
+        items.forEach((item, index) => {
+            item.classList.remove('active');
+            item.classList.remove('blur');
+            if (index === currentIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.add('blur');
+            }
+        });
+    }
+    document.querySelector('.prev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        showItems();
+    });
+    document.querySelector('.next').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % items.length;
+        showItems();
+    });
+    showItems();
