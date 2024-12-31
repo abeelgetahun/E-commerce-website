@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Page title -->
     <title>Team Members Slider</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <!-- External stylesheet for additional styles -->
     <link rel="stylesheet" href="about.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-image:linear-gradient(white,black);
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            overflow: hidden;
+
         }
 
         .navbar {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background-color: #333;
+            background-color: #312b2b;
             padding: 10px 20px;
             position: fixed;
             width: 100%;
@@ -30,20 +32,22 @@
 
         .navbar a {
             text-decoration: none;
-            color: white;
+            color: black;
+            background-color:#3be7d0;
             font-size: 18px;
             padding: 8px 16px;
+            margin-left:5px;
             border-radius: 4px;
             transition: background-color 0.3s ease;
             margin-right: 10px;
         }
 
         .navbar a:hover {
-            background-color: #575757;
+            background-color: #057465;
         }
 
         .container {
-            margin-top: 60px;
+            margin-top: 100px;
         }
 
         .slide {
@@ -54,14 +58,27 @@
 
         .item {
             flex: 0 0 auto;
-            width: 300px;
-            height: 400px;
+            width: 200px;
+            height: 500px;
             margin: 10px;
+            margin-bottom:130px;
+            margin-left:30px;
             border-radius: 10px;
             position: relative;
             overflow: hidden;
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s, filter 0.5s;
+        }
+
+        .item.active {
+            transform: scale(1.5);
+            z-index: 1;
+
+        }
+
+        .item.blur {
+            filter: blur(5px);
         }
 
         .content {
@@ -99,12 +116,13 @@
         .button {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top:30px;
+
         }
 
         .button button {
             border: none;
-            background-color: #333;
+            background-color: #333333;
             color: white;
             font-size: 18px;
             padding: 10px 20px;
@@ -119,7 +137,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <div class="navbar">
         <a href="#home">Home</a>
         <a href="#signup">Signup</a>
@@ -128,10 +145,8 @@
         <a href="#about">About</a>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
         <div class="slide">
-            <!-- Abel Getahun -->
             <div class="item" style="background-image: url(https://i.ibb.co/qCkd9jS/img1.jpg);">
                 <div class="content">
                     <div class="name">Abel Getahun</div>
@@ -144,7 +159,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Jaleta Kebede -->
             <div class="item" style="background-image: url(https://i.ibb.co/jrRb11q/img2.jpg);">
                 <div class="content">
                     <div class="name">Jaleta Kebede</div>
@@ -157,7 +171,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Liben Adunga -->
             <div class="item" style="background-image: url(https://i.ibb.co/NSwVv8D/img3.jpg);">
                 <div class="content">
                     <div class="name">Liben Adunga</div>
@@ -170,7 +183,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Meklit -->
             <div class="item" style="background-image: url(https://i.ibb.co/RNkk6L0/img6.jpg);">
                 <div class="content">
                     <div class="name">Meklit</div>
@@ -183,7 +195,46 @@
                     </div>
                 </div>
             </div>
+            <div class="item" style="background-image:conic-gradient(from 0deg ,black,rgb(255, 0, 0),rgb(65, 9, 219),gray);">
+                <div class="content">
+                    <div class="name">Yasin</div>
+                    <div class="bio">Overall System Viewer and Editors.</div>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image:url(https://i.ibb.co/jrRb11q/img2.jpg);">
+                <div class="content">
+                    <div class="name">Abreham</div>
+                    <div class="bio">Overall System Viewer and Editors.</div>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://i.ibb.co/RNkk6L0/img6.jpg);">
+                <div class="content">
+                    <div class="name">Aklilu</div>
+                    <div class="bio">Frontend Developer.</div>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
 
   <!-- Navigation Buttons for Scrolling -->
         <div class="button">
