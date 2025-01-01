@@ -10,50 +10,149 @@
     }
 %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Balance - Genuine Electronics</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance - Genuine Electronics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="components/styles/common.css">
     <link rel="stylesheet" href="components/styles/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-green: #4CAF50;
+            --hover-green: #45a049;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
         .balance-container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 40px auto;
             padding: 20px;
         }
+
         .balance-card {
-            background: linear-gradient(45deg, #2196F3, #1976D2);
             color: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 15px;
             margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
+
+        .balance-card:hover {
+            transform: translateY(-5px);
+        }
+
         .instruction-card {
             background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
         }
+
+        .instruction-card h3 {
+            font-size: 24px;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .instruction-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
         .notify-btn {
-            background-color: #4CAF50;
+            background-color: var(--primary-green);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         .notify-btn:hover {
-            background-color: #45a049;
+            background-color: var(--hover-green);
+            transform: scale(1.05);
         }
+
         .bank-details {
-            background: #f5f5f5;
-            padding: 15px;
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary-green);
+        }
+
+        .file-input-wrapper {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .file-input {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-green);
+            color: white;
             border-radius: 5px;
-            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-input-label:hover {
+            background-color: var(--hover-green);
+        }
+
+        .steps-list {
+            padding-left: 20px;
+        }
+
+        .steps-list li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .balance-container {
+                padding: 10px;
+            }
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(135deg, #333, #000);
+            }
+            50% {
+                background: linear-gradient(135deg, #555, #333);
+            }
+            100% {
+                background: linear-gradient(135deg, #333, #000);
+            }
+        }
+
+        .balance-card {
+            animation: gradientAnimation 5s ease infinite;
         }
     </style>
 </head>
@@ -64,29 +163,33 @@
         <div class="balance-card">
             <h2>Welcome, ${user.fullName}</h2>
             <h3>Available Balance: <fmt:formatNumber value="${user.balance}" type="number" minFractionDigits="2" maxFractionDigits="2" /></h3>
-
-
         </div>
 
         <div class="instruction-card">
-            <h3>Add Money to Genuify Account</h3>
-            <p>Follow these steps to add money to your account:</p>
+            <h3>Quick Fund Your Genuify Account</h3>
+            <p>Follow these simple steps to add money:</p>
 
             <div class="bank-details">
                 <p><strong>Bank:</strong> CBE (Commercial Bank of Ethiopia)</p>
-                <p><strong>Account Number:</strong> ************</p>
-                <p><strong>Account Holder:</strong> [Owner Name]</p>
+                <p><strong>Account:</strong> ************</p>
+                <p><strong>Holder:</strong> [Owner Name]</p>
             </div>
 
-            <ol>
-                <li>Transfer the desired amount to the above account</li>
-                <li>Take a screenshot of your transfer confirmation</li>
-                <li>Upload the screenshot using the button below</li>
-                <li>Click notify to inform us about your transfer</li>
+            <ol class="steps-list">
+                <li>Transfer funds to the account above</li>
+                <li>Screenshot your transfer confirmation</li>
+                <li>Upload the screenshot below</li>
+                <li>Click 'Notify' to confirm your transfer</li>
             </ol>
 
-            <input type="file" accept="image/*" style="margin: 20px 0;">
-            <br>
+            <div class="file-input-wrapper">
+                <input type="file" id="fileInput" accept="image/*" class="file-input">
+                <label for="fileInput" class="file-input-label">
+                    <i class="fas fa-upload"></i> Upload Screenshot
+                </label>
+                <span id="fileName"></span>
+            </div>
+
             <button class="notify-btn" onclick="showNotification()">
                 <i class="fas fa-bell"></i> Notify
             </button>
@@ -94,9 +197,20 @@
     </div>
 
     <script>
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            var fileName = e.target.files[0].name;
+            document.getElementById('fileName').textContent = fileName;
+        });
+
         function showNotification() {
-            alert("Notification feature coming soon!");
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length > 0) {
+                alert("Thank you for your notification. We'll process your transfer soon!");
+            } else {
+                alert("Please upload a screenshot of your transfer before notifying.");
+            }
         }
     </script>
 </body>
 </html>
+
