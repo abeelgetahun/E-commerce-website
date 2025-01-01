@@ -29,7 +29,7 @@
         .nav-button {
             padding: 10px 25px;
             border: none;
-            border-radius: 4px;
+            border-radius: 20px;
             cursor: pointer;
             background-color: #007bff;
             color: white;
@@ -60,12 +60,12 @@
 
         .dashboard-container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 10px 10px 10px 0.2px rgba(0,0,0,0.1);
         }
 
         .form-group {
@@ -151,10 +151,10 @@
 </head>
 <body>
     <div class="nav-buttons">
-        <button class="nav-button" onclick="showSection('add')">Add</button>
-        <button class="nav-button" onclick="showSection('orders')">Orders</button>
-        <button class="nav-button" onclick="showSection('analysis')">Analysis</button>
-        <div class="user-icon" onclick="logout()">👤</div>
+        <button class="nav-button" onclick="showSection('add')" title="Add">Add</button>
+        <button class="nav-button" onclick="showSection('orders')" title="Order">Orders</button>
+        <button class="nav-button" onclick="showSection('analysis')" title="Analysis">Analysis</button>
+        <div class="user-icon" onclick="logout()" title="Profile">👤</div>
     </div>
 
     <div class="dashboard-container">

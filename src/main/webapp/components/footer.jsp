@@ -3,7 +3,7 @@
 <ul class="footer-links">
   <li><a href="#">Privacy Policy</a></li>
   <li><a href="#">Terms of Service</a></li>
-  <li><a href="#">Contact Us</a></li>
+  <li><a href="contact_us.jsp">Contact Us</a></li>
 </ul>
 </div>
 
