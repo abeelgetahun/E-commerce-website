@@ -4,86 +4,118 @@
 <head>
     <title>Login</title>
     <style>
-        /* Styles for the login container */
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
         .login-container {
             width: 300px;
             margin: 100px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        /* Styling for form groups */
+
+        h2 {
+            color: #000000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
+
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #000000;
+            font-weight: 600;
         }
+
         .form-group input {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
         }
-        /* Styles for the login button */
+
+        .form-group input:focus {
+            border-color: #2ecc71;
+            outline: none;
+        }
+
         .button {
-            background-color: #000000;
+            background-color: #2ecc71;
             color: white;
-            padding: 10px 15px;
+            padding: 12px 15px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
         }
+
         .button:hover {
-            background-color: #45a049;
+            background-color: #27ae60;
         }
-        /* Error message styles */
+
         .error {
-            color: red;
-            margin-bottom: 15px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
         }
-        /* Styles for the signup link */
+
         .signup-link {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 20px;
+            color: #000000;
         }
+
         .signup-link a {
-            color: #4CAF50;
+            color: #2ecc71;
             text-decoration: none;
+            font-weight: 600;
         }
+
         .signup-link a:hover {
             text-decoration: underline;
         }
-        /* Styles for the admin login button */
+
         .admin-button {
             display: block;
             width: 100%;
-            padding: 10px;
-            background-color: #2196F3;
+            padding: 12px;
+            background-color: #000000;
             color: white;
             text-align: center;
             text-decoration: none;
-            border-radius: 4px;
-            margin-top: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
         }
+
         .admin-button:hover {
-            background-color: #1976D2;
+            background-color: #333333;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <% 
-        // Check if an error attribute exists in the request scope 
-        // and display it as an error message if present
-        if(request.getAttribute("error") != null) { 
+        <%
+        if(request.getAttribute("error") != null) {
         %>
             <div class="error">${error}</div>
         <% } %>
-        <!-- Login form submission -->
         <form action="/E_commerce/login" method="post">
             <div class="form-group">
                 <label>Username or Email</label>
@@ -97,12 +129,10 @@
                 <button type="submit" class="button">Login</button>
             </div>
         </form>
-        <!-- Link to sign up page -->
         <div class="signup-link">
             Don't have an account?
             <a href="${pageContext.request.contextPath}/signup.jsp">Sign Up</a>
         </div>
-        <!-- Admin login button -->
         <a href="${pageContext.request.contextPath}/adminLogin.jsp" class="admin-button">Admin Login</a>
     </div>
 </body>
