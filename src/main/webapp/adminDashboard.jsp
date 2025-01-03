@@ -1,500 +1,236 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="Admin_components/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Dashboard - Add Product</title>
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* Container for the chart */
+        .chart-container {
+            width: 45%;
+            height: 400px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            display: inline-block;
+            vertical-align: top;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
+        .chart-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
 
-        .nav-buttons {
+        .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Quick Stats section styling */
+        .stats {
             display: flex;
             justify-content: space-between;
-            padding: 15px 30px;
-            background-color: #333;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            margin-bottom: 30px;
         }
 
-        .nav-button {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .nav-button:hover {
-            background-color: #0056b3;
-        }
-
-        .user-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #6c757d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .user-icon:hover {
-            background-color: #5a6268;
-        }
-
-        .dashboard-container {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
+        .stat-card {
+            background-color: #fff;
             padding: 20px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 10px 10px 10px 0.2px rgba(0,0,0,0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0,123,255,0.3);
-        }
-
-        .specs-container {
-            padding: 20px;
-            border: 1px solid #ddd;
-            margin-top: 20px;
             border-radius: 8px;
-            background-color: #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 23%;
+            text-align: center;
         }
 
-        .specs-container h3 {
-            margin-bottom: 15px;
+        .stat-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .stat-card p {
+            font-size: 1.5em;
             color: #333;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 5px;
         }
 
-        .button {
-            background-color: #28a745;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #218838;
-        }
-
-        .success-message {
-            color: #28a745;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            display: none;
-        }
-
-        .error-message {
-            color: #dc3545;
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            display: none;
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 15px 0; /* Adjust padding to give some space inside */
+            background-color: #f1f1f1;
+            margin-top: 30px; /* Added margin to create space between content and footer */
+            font-size: 0.9em;
+            border-top: 1px solid #ddd; /* Optional: adds a subtle separator line */
         }
     </style>
 </head>
 <body>
-    <div class="nav-buttons">
-        <button class="nav-button" onclick="showSection('add')" title="Add">Add</button>
-        <button class="nav-button" onclick="showSection('orders')" title="Order">Orders</button>
-        <button class="nav-button" onclick="showSection('analysis')" title="Analysis">Analysis</button>
-        <div class="user-icon" onclick="logout()" title="Profile">👤</div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Header Section -->
+        <div class="content-header">
+            <h1>Welcome to the Admin Dashboard</h1>
+            <p>Here, you can manage products, categories, view analytics, and more.</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total Products</h3>
+                <p>320</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Categories</h3>
+                <p>15</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p>1,230</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Orders</h3>
+                <p>75</p>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-wrapper">
+            <!-- Sales Chart -->
+            <div class="chart-container">
+                <h3>Sales Analytics (2025)</h3>
+                <canvas id="salesChart"></canvas>
+            </div>
+
+            <!-- Inventory Chart -->
+            <div class="chart-container">
+                <h3>Inventory Levels</h3>
+                <canvas id="inventoryChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-wrapper">
+            <!-- User Activity Chart -->
+            <div class="chart-container">
+                <h3>User Activity</h3>
+                <canvas id="activityChart"></canvas>
+            </div>
+
+            <!-- Revenue Chart -->
+            <div class="chart-container">
+                <h3>Revenue (2025)</h3>
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+		
+
     </div>
 
-    <div class="dashboard-container">
-        <div id="success-message" class="success-message">Product added successfully!</div>
-        <div id="error-message" class="error-message">Error adding product. Please try again.</div>
+   
 
-        <h2>Add New Product</h2>
-        <form action="${pageContext.request.contextPath}/addProduct" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label>Category</label>
-                <select name="category" id="category" onchange="showSpecifications()" required>
-                    <option value="">Select Category</option>
-                    <option value="mobile">Mobile Phone</option>
-                    <option value="pc">PC/Laptop</option>
-                    <option value="watch">Smart Watch</option>
-                    <option value="headset">Headset</option>
-                    <option value="tv">TV</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Product Name</label>
-                <input type="text" name="name" required>
-            </div>
-
-            <div class="form-group">
-                <label>Company</label>
-                <input type="text" name="company" required>
-            </div>
-
-            <div class="form-group">
-                <label>Price</label>
-                <input type="number" name="price" step="0.01" required>
-            </div>
-
-            <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" rows="4" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Product Image</label>
-                <input type="file" name="image" accept="image/*" required>
-            </div>
-
-            <!-- Mobile Phone Specifications -->
-            <div id="mobileSpecs" class="specs-container" style="display: none;">
-                <h3>Mobile Phone Specifications</h3>
-                <div class="form-group">
-                    <label>Brand</label>
-                    <input type="text" name="mobile_brand">
-                </div>
-                <div class="form-group">
-                    <label>Operating System</label>
-                    <input type="text" name="mobile_os">
-                </div>
-                <div class="form-group">
-                    <label>RAM (GB)</label>
-                    <input type="text" name="mobile_ram">
-                </div>
-                <div class="form-group">
-                    <label>Storage (GB)</label>
-                    <input type="text" name="mobile_storage">
-                </div>
-                <div class="form-group">
-                    <label>Main Camera (MP)</label>
-                    <input type="text" name="mobile_main_camera">
-                </div>
-                <div class="form-group">
-                    <label>Rear Camera (MP)</label>
-                    <input type="text" name="mobile_rear_camera">
-                </div>
-                <div class="form-group">
-                    <label>Network Technology</label>
-                    <input type="text" name="mobile_network">
-                </div>
-                <div class="form-group">
-                    <label>Screen Technology</label>
-                    <input type="text" name="mobile_screen">
-                </div>
-                <div class="form-group">
-                    <label>Weight (g)</label>
-                    <input type="text" name="mobile_weight">
-                </div>
-                <div class="form-group">
-                    <label>Launch Date</label>
-                    <input type="date" name="mobile_launch_date">
-                </div>
-                <div class="form-group">
-                    <label>Battery Capacity (mAh)</label>
-                    <input type="text" name="mobile_battery">
-                </div>
-                <div class="form-group">
-                    <label>Charging Specifications</label>
-                    <input type="text" name="mobile_charging">
-                </div>
-            </div>
-
-            <!-- PC/Laptop Specifications -->
-            <div id="pcSpecs" class="specs-container" style="display: none;">
-                <h3>PC/Laptop Specifications</h3>
-                <div class="form-group">
-                    <label>Brand</label>
-                    <input type="text" name="pc_brand">
-                </div>
-                <div class="form-group">
-                    <label>Processor Speed</label>
-                    <input type="text" name="pc_processor">
-                </div>
-                <div class="form-group">
-                    <label>RAM (GB)</label>
-                    <input type="text" name="pc_ram">
-                </div>
-                <div class="form-group">
-                    <label>Storage (GB)</label>
-                    <input type="text" name="pc_storage">
-                </div>
-                <div class="form-group">
-                    <label>Display Size (inches)</label>
-                    <input type="text" name="pc_display">
-                </div>
-                <div class="form-group">
-                    <label>Graphics Card</label>
-                    <input type="text" name="pc_graphics">
-                </div>
-                <div class="form-group">
-                    <label>Operating System</label>
-                    <input type="text" name="pc_os">
-                </div>
-                <div class="form-group">
-                    <label>Battery Capacity (Wh)</label>
-                    <input type="text" name="pc_battery">
-                </div>
-                <div class="form-group">
-                    <label>Charging Specifications</label>
-                    <input type="text" name="pc_charging">
-                </div>
-                <div class="form-group">
-                    <label>Touch Sensor</label>
-                    <select name="pc_touch">
-                        <option value="false">No</option>
-                        <option value="true">Yes</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Keyboard Backlight</label>
-                    <select name="pc_keyboard_light">
-                        <option value="false">No</option>
-                        <option value="true">Yes</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Number of Fans</label>
-                    <input type="number" name="pc_fans" min="0">
-                </div>
-            </div>
-            <!-- Smart Watch Specifications -->
-            <div id="watchSpecs" class="specs-container" style="display: none;">
-                <h3>Smart Watch Specifications</h3>
-                <div class="form-group">
-                    <label>Model</label>
-                    <input type="text" name="watch_model">
-                </div>
-                <div class="form-group">
-                    <label>Storage</label>
-                    <input type="text" name="watch_storage">
-                </div>
-                <div class="form-group">
-                    <label>RAM</label>
-                    <input type="text" name="watch_ram">
-                </div>
-                <div class="form-group">
-                    <label>Rear Camera</label>
-                    <input type="text" name="watch_rear_camera">
-                </div>
-                <div class="form-group">
-                    <label>Front Camera</label>
-                    <input type="text" name="watch_front_camera">
-                </div>
-                <div class="form-group">
-                    <label>Battery Capacity</label>
-                    <input type="text" name="watch_battery">
-                </div>
-                <div class="form-group">
-                    <label>Charging Specifications</label>
-                    <input type="text" name="watch_charging">
-                </div>
-                <div class="form-group">
-                    <label>Connectivity</label>
-                    <input type="text" name="watch_connectivity">
-                </div>
-                <div class="form-group">
-                    <label>Display Size</label>
-                    <input type="text" name="watch_display">
-                </div>
-                <div class="form-group">
-                    <label>Water Proof Rating</label>
-                    <input type="text" name="watch_waterproof">
-                </div>
-            </div>
-
-            <!-- Headset Specifications -->
-            <div id="headsetSpecs" class="specs-container" style="display: none;">
-                <h3>Headset Specifications</h3>
-                <div class="form-group">
-                    <label>Brand</label>
-                    <input type="text" name="headset_brand">
-                </div>
-                <div class="form-group">
-                    <label>Battery Capacity</label>
-                    <input type="text" name="headset_battery">
-                </div>
-                <div class="form-group">
-                    <label>Charging Specifications</label>
-                    <input type="text" name="headset_charging">
-                </div>
-                <div class="form-group">
-                    <label>Wireless Technology</label>
-                    <input type="text" name="headset_wireless">
-                </div>
-                <div class="form-group">
-                    <label>Noise Cancellation</label>
-                    <select name="headset_noise_cancellation">
-                        <option value="false">No</option>
-                        <option value="true">Yes</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Color</label>
-                    <input type="text" name="headset_color">
-                </div>
-            </div>
-
-            <!-- TV Specifications -->
-            <div id="tvSpecs" class="specs-container" style="display: none;">
-                <h3>TV Specifications</h3>
-                <div class="form-group">
-                    <label>Model</label>
-                    <input type="text" name="tv_model">
-                </div>
-                <div class="form-group">
-                    <label>Screen Size</label>
-                    <input type="text" name="tv_screen_size">
-                </div>
-                <div class="form-group">
-                    <label>Screen Resolution</label>
-                    <input type="text" name="tv_resolution">
-                </div>
-                <div class="form-group">
-                    <label>Refresh Rate</label>
-                    <input type="text" name="tv_refresh_rate">
-                </div>
-                <div class="form-group">
-                    <label>Operating System</label>
-                    <input type="text" name="tv_os">
-                </div>
-                <div class="form-group">
-                    <label>Audio System</label>
-                    <input type="text" name="tv_audio">
-                </div>
-                <div class="form-group">
-                    <label>Backlight</label>
-                    <input type="text" name="tv_backlight">
-                </div>
-                <div class="form-group">
-                    <label>Number of Speakers</label>
-                    <input type="number" name="tv_speakers" min="0">
-                </div>
-                <div class="form-group">
-                    <label>WiFi Specifications</label>
-                    <input type="text" name="tv_wifi">
-                </div>
-                <div class="form-group">
-                    <label>Bluetooth Specifications</label>
-                    <input type="text" name="tv_bluetooth">
-                </div>
-                <div class="form-group">
-                    <label>USB Ports</label>
-                    <input type="number" name="tv_usb" min="0">
-                </div>
-                <div class="form-group">
-                    <label>HDMI Ports</label>
-                    <input type="number" name="tv_hdmi" min="0">
-                </div>
-                <div class="form-group">
-                    <label>Memory</label>
-                    <input type="text" name="tv_memory">
-                </div>
-                <div class="form-group">
-                    <label>Weight</label>
-                    <input type="text" name="tv_weight">
-                </div>
-            </div>
-
-            <button type="submit" class="button">Add Product</button>
-        </form>
-    </div>
-
+    <!-- Chart.js Script -->
     <script>
-        function showSpecifications() {
-            const category = document.getElementById('category').value;
-            // Hide all spec containers
-            document.getElementById('mobileSpecs').style.display = 'none';
-            document.getElementById('pcSpecs').style.display = 'none';
-            document.getElementById('watchSpecs').style.display = 'none';
-            document.getElementById('headsetSpecs').style.display = 'none';
-            document.getElementById('tvSpecs').style.display = 'none';
-
-            // Show the selected category's specs
-            if (category) {
-                document.getElementById(category + 'Specs').style.display = 'block';
+        // Sales Chart (Line Chart)
+        var salesCtx = document.getElementById('salesChart').getContext('2d');
+        var salesChart = new Chart(salesCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Sales in 2025 (in USD)',
+                    data: [12, 19, 3, 5, 2, 3, 20],
+                    borderColor: '#0066cc',
+                    backgroundColor: 'rgba(0, 102, 204, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        }
+        });
 
-        function showSection(section) {
-            // Implementation for section switching
-            console.log('Switching to section:', section);
-        }
-
-        function logout() {
-            // Implementation for logout
-            window.location.href = '${pageContext.request.contextPath}/logout';
-        }
-
-        // Show success/error message based on URL parameters
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === 'true') {
-                document.getElementById('success-message').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('success-message').style.display = 'none';
-                }, 3000);
+        // Inventory Chart (Bar Chart)
+        var inventoryCtx = document.getElementById('inventoryChart').getContext('2d');
+        var inventoryChart = new Chart(inventoryCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'],
+                datasets: [{
+                    label: 'Inventory Levels',
+                    data: [20, 15, 30, 10, 25],
+                    backgroundColor: '#ff5733',
+                    borderColor: '#ff5733',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-            if (urlParams.get('error') === 'true') {
-                document.getElementById('error-message').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('error-message').style.display = 'none';
-                }, 3000);
+        });
+
+        // User Activity Chart (Pie Chart)
+        var activityCtx = document.getElementById('activityChart').getContext('2d');
+        var activityChart = new Chart(activityCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Active Users', 'Inactive Users'],
+                datasets: [{
+                    label: 'User Activity',
+                    data: [70, 30],
+                    backgroundColor: ['#28a745', '#dc3545'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
             }
-        }
+        });
+
+        // Revenue Chart (Doughnut Chart)
+        var revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        var revenueChart = new Chart(revenueCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Online Sales', 'In-Store Sales', 'Affiliate Sales'],
+                datasets: [{
+                    label: 'Revenue Distribution',
+                    data: [60, 25, 15],
+                    backgroundColor: ['#ffc107', '#28a745', '#0066cc'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
     </script>
+
 </body>
 </html>
