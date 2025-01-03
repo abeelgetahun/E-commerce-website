@@ -1,0 +1,294 @@
+/* Resetting some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    color: #333;
+    padding: 20px;
+}
+
+/* Main container for the add product form */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    transition: transform 0.5s;
+}
+
+/* Hover effect to make the form look like it's floating */
+.container:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #5f6368;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Form styling */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Input focus effect */
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus,
+input[type="file"]:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+    outline: none;
+}
+
+/* Textarea */
+textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Button styling */
+button[type="submit"] {
+    grid-column: span 2;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #0066ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 102, 255, 0.2);
+}
+
+button[type="submit"]:hover {
+    background-color: #0047cc;
+    transform: translateY(-5px);
+}
+
+button[type="submit"]:active {
+    background-color: #0033a8;
+    transform: translateY(1px);
+}
+
+/* 3D Effects for the inputs */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    border-radius: 8px;
+    position: relative;
+    background-color: #f2f2f2;
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover,
+textarea:hover,
+select:hover {
+    transform: scale(1.05);
+}
+
+input[type="file"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Header */
+.specs-container h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Input fields inside specs containers */
+.specs-container .form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Show specs section with animation */
+.specs-container {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.5s forwards;
+    display: none; /* Initially hidden */
+}
+
+/* Define the slide-up animation */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adding transition effect to make showing and hiding more smooth */
+.specs-container.show {
+    display: block !important; /* When active, display the section */
+    animation: slideUp 0.5s forwards;
+}
+
+.specs-container.hide {
+    display: none !important; /* Hide section */
+}
+
+/* Hide all the specifications sections initially */
+#mobileSpecs,
+#pcSpecs,
+#watchSpecs,
+#headsetSpecs,
+#tvSpecs {
+    display: none;
+}
+
+/* For category dropdown, style the options and make hover effect */
+select[name="category"] {
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* For category dropdown selection hover */
+select[name="category"]:hover {
+    border-color: #0066ff;
+}
+
+/* Success and Error Messages */
+#success-message,
+#error-message {
+    display: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transform: scale(0);
+    animation: fadeIn 0.3s forwards;
+}
+
+#error-message {
+    background-color: #dc3545;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Add Product Page */
+.add-product-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+    .specs-container {
+        margin-top: 20px;
+    }
+}
+
+/* Custom styles for individual product specification sections */
+#mobileSpecs,
+#pcSpecs,
+#watchSpecs,
+#headsetSpecs,
+#tvSpecs {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* When specs are shown, apply a smoother transition */
+#mobileSpecs.show,
+#pcSpecs.show,
+#watchSpecs.show,
+#headsetSpecs.show,
+#tvSpecs.show {
+    opacity: 1;
+    display: block;
+}
+
+/* Animation for the specs visibility */
+@keyframes fadeInSpecs {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
