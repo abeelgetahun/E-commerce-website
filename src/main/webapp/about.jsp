@@ -116,6 +116,7 @@
     </style>
 </head>
 <body>
+  <jsp:include page="components/navbar.jsp" />
   
     <!-- Main Content -->
     <div class="container">
