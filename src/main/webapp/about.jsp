@@ -181,11 +181,12 @@
             <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
-
-    <script src="script.js"></script>
   <footer>
         <jsp:include page="components/footer.jsp" />
   </footer>
+
+    <script src="script.js"></script>
+ 
 </body>
 </html>
 -->
