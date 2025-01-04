@@ -183,6 +183,9 @@
     </div>
 
     <script src="script.js"></script>
+  <footer>
+        <jsp:include page="components/footer.jsp" />
+  </footer>
 </body>
 </html>
 -->
