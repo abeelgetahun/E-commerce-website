@@ -6,7 +6,7 @@
             <li><a href="cart.jsp">Cart</a></li>
             <a href="order.jsp"><i class="fas fa-shopping-bag"></i> Orders</a>
             <a href="balance.jsp"><i class="fas fa-wallet"></i> Balance</a>
-            <a href="about.jsp"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#"><i class="fas fa-info-circle"></i> About</a>
             <a href="login.jsp" class="user-icon"><i class="fas fa-user-circle"></i></a>
         </div>
     </div>
