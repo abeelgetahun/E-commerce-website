@@ -131,8 +131,8 @@
                     <div class="bio">Backend Developer passionate about building scalable and secure APIs.</div>
                     <div class="social-links">
                         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://github.com/abeelgetahun" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/Yene_enat1" target="_blank"><i class="fab fa-telegram"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -144,8 +144,8 @@
                     <div class="bio">Frontend Developer skilled in crafting engaging user interfaces.</div>
                     <div class="social-links">
                         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://github.com/biniam0" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://t.me/bini_yam0" target="_blank"><i class="fab fa-telegram"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                     <div class="social-links">
                         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="https://t.me/liben12" target="_blank"><i class="fab fa-telegram"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
