@@ -14,7 +14,7 @@
     <div class="content-header">
         <h1>Add New Product</h1>
        </div>
-        <form action="${pageContext.request.contextPath}/Admin_components/addProduct" method="post" enctype="multipart/form-data">
+        <form action="${pageContext.request.contextPath}/addProduct" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Category</label>
                 <select name="category" id="category" onchange="showSpecifications()" required>
