@@ -157,7 +157,7 @@
                     <div class="bio">Database Engineer passionate about data integrity and optimization.</div>
                     <div class="social-links">
                         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/Lib1221" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://t.me/liben12" target="_blank"><i class="fab fa-telegram"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
