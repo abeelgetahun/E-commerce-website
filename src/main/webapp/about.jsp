@@ -163,6 +163,20 @@
                     </div>
                 </div>
             </div>
+            <!-- Abrham Kifle -->
+            <div class="item" style="background-image: url(https://i.ibb.co/xyz/image3.jpg);">
+               <div class="content">
+                 <div class="name">Abrham Kifle</div>
+                   <div class="bio">Front-End Developer passionate about creating interactive and engaging user interfaces. Assigned to the About Page.</div>
+                      <div class="social-links">
+                          <a href="https://www.linkedin.com/in/abreham-kifle" target="_blank"><i class="fab fa-linkedin"></i></a>
+                          <a href="https://github.com/abreham-kifle" target="_blank"><i class="fab fa-github"></i></a>
+                          <a href="https://t.me/bakosawi" target="_blank"><i class="fab fa-telegram"></i></a>
+                          <a href="https://instagram.com/abreham.kifle" target="_blank"><i class="fab fa-instagram"></i></a>
+                      </div>
+                   </div>
+               </div>
+
             <!-- Meklit -->
             <div class="item" style="background-image: url(https://i.ibb.co/RNkk6L0/img6.jpg);">
                 <div class="content">
@@ -177,6 +191,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- Aklilu Desalegn -->
+<div class="item" style="background-image: url(https://i.ibb.co/xyz/image1.jpg);">
+    <div class="content">
+        <div class="name">Aklilu Desalegn</div>
+        <div class="bio">Front-End Developer specializing in responsive and user-friendly designs. Assigned to the Home Page.</div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/aklilu-desalegn" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/aklilu-desalegn" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/ake0507" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/aklilu.desalegn" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Yasin Shalo -->
+<div class="item" style="background-image: url(https://i.ibb.co/xyz/image2.jpg);">
+    <div class="content">
+        <div class="name">Yasin Shalo</div>
+        <div class="bio">Front-End Developer with a focus on maintaining design consistency and functionality. Contributing to general front-end development.</div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/yasin-shalo" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/yasin-shalo" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/Y_5949" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/yasin.shalo" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</div>
+
 
         <!-- Navigation Buttons -->
         <div class="button">
