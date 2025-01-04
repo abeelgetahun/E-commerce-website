@@ -100,12 +100,7 @@ An intuitive e-commerce platform that enables seamless item management and sales
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.  
 
----
 
-## 📜 **License**  
-This project is licensed under the MIT License. See the LICENSE file for details.  
-
----
 
 ## 🙏 **Acknowledgements**  
 Special thanks to all contributors and the open-source community for their invaluable resources and support.  
