@@ -170,7 +170,7 @@
                    <div class="bio">Front-End Developer passionate about creating interactive and engaging user interfaces. Assigned to the About Page.</div>
                       <div class="social-links">
                           <a href="https://www.linkedin.com/in/abreham-kifle" target="_blank"><i class="fab fa-linkedin"></i></a>
-                          <a href="https://github.com/abreham-kifle" target="_blank"><i class="fab fa-github"></i></a>
+                          <a href="https://github.com/abrhot" target="_blank"><i class="fab fa-github"></i></a>
                           <a href="https://t.me/bakosawi" target="_blank"><i class="fab fa-telegram"></i></a>
                           <a href="https://instagram.com/abreham.kifle" target="_blank"><i class="fab fa-instagram"></i></a>
                       </div>
@@ -184,7 +184,7 @@
                     <div class="bio">README Specialist ensuring clear and concise documentation.</div>
                     <div class="social-links">
                         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/Meklit542" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
                         <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
@@ -199,7 +199,7 @@
         <div class="bio">Front-End Developer specializing in responsive and user-friendly designs. Assigned to the Home Page.</div>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/aklilu-desalegn" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/aklilu-desalegn" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/ake0507" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://t.me/ake0507" target="_blank"><i class="fab fa-telegram"></i></a>
             <a href="https://instagram.com/aklilu.desalegn" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
@@ -213,7 +213,7 @@
         <div class="bio">Front-End Developer with a focus on maintaining design consistency and functionality. Contributing to general front-end development.</div>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/yasin-shalo" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/yasin-shalo" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Yasin5949" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://t.me/Y_5949" target="_blank"><i class="fab fa-telegram"></i></a>
             <a href="https://instagram.com/yasin.shalo" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
